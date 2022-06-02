@@ -21,7 +21,7 @@ import re
 #%%
 
 
-folder="F:/Nadiehs_data"
+folder="" #full filepath to folder
 
 
 mgf_files=[str(Path(folder,f)) for f in os.listdir(folder) if f.endswith(".mgf")]
