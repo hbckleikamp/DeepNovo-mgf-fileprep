@@ -23,7 +23,6 @@ import re
 
 folder="" #full filepath to folder
 
-
 mgf_files=[str(Path(folder,f)) for f in os.listdir(folder) if f.endswith(".mgf")]
 idXML_files=[str(Path(folder,f)) for f in os.listdir(folder) if f.endswith(".idXML")]
 
@@ -38,9 +37,9 @@ for file in mgf_files:
     
         if not "SEQ=" in lines:
        
-        
+            print(file)
             # parse idXML
-            idXML_file=file[:-3]+"txt"
+            idXML_file=file[:-3]+"idXML"
             if Path(idXML_file).name in os.listdir(folder):
                 pass
             else: 
@@ -82,7 +81,7 @@ for file in mgf_files:
                 s=l[3].split()
                 l[3]=s[0]
                 rt=l.pop(2)
-                # l[3]+="+"
+   
                 
                 if "scan" in l[1]:
                     scan=str(l[1].split("scan=")[1].split(".")[0])
@@ -99,3 +98,4 @@ for file in mgf_files:
             ls="\n".join(ls)+"\n"
             with open(file.replace(".mgf","_scan.mgf"), "w") as w:
                 w.write(ls)
+                
